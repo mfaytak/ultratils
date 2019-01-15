@@ -53,5 +53,8 @@ docs/_build/
 # PyBuilder
 target/
 
-* Vim files
+# Vim files
 .*.swp
+
+# Mac OS
+.DS_Store

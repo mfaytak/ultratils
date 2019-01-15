@@ -4,16 +4,27 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
 import numpy
+import sys
 
-ext_modules = [
-  Extension(
-    name="ultratils.pysonix.scanconvert",
-    sources=["ultratils/pysonix/scanconvert.pyx"],
-    libraries = ["m"],
-    include_dirs=[numpy.get_include(), "."],
-    language="c",
-  )
-]
+if sys.platform == 'win32':
+  ext_modules = [
+    Extension(
+      name="ultratils.pysonix.scanconvert",
+      sources=["ultratils/pysonix/scanconvert.pyx"],
+      include_dirs=[numpy.get_include(), "."],
+      language="c",
+    )
+  ]
+else:
+  ext_modules = [
+    Extension(
+      name="ultratils.pysonix.scanconvert",
+      sources=["ultratils/pysonix/scanconvert.pyx"],
+      libraries = ["m"],
+      include_dirs=[numpy.get_include(), "."],
+      language="c",
+    )
+  ]
 
 
 setup(
